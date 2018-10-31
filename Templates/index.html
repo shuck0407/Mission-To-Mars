@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Huck Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+  <!-- latest Mars news -->
+  <div class="row">
+    <h2>Latest Mars News</h2>
+       <h4>{{ mars.nasa_headline }}</h4>
+          <h5>{{ mars.nasa_date }}</h5>
+             <p>{{ mars.nasa_teaser }}</p>
+             <br>
+  <div class="row">
+    <div class="col-md-7">
+      <h2>Featured Mars Image</h2>
+      <img src= {{ mars.featured_image }} width= "75%" height = "75%" alt="Featured Image" class="img-responsive"> />
+    </div>
+    <div class="col-md-5">
+      <h4>Current Weather on Mars</h4>
+        <div class="row">
+          <p>{{ mars.weather }}</p>
+        </div>
+        <div class="row">
+          <h4>Mars Facts</h4>
+            <table> {{ mars.facts_table | safe }}
+            </table>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Mars Hemispheres</h2>
+        <div class="col-md-6"> 
+          <figure class="figure">
+            <img src= {{ mars.hemi_img[0].image}} class="figure-img img-responsive">
+            <figcaption class="figure-caption text-center">{{ mars.hemi_img[0].title}}</figcaption>
+          </figure>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+
+</html>
