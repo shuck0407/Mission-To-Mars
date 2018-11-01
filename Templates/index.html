@@ -4,57 +4,106 @@
 <head>
   <meta charset="UTF-8">
   <title>Huck Mars</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    .jumbotron {
+      margin-top: 20px;
+      background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2015/10/10/817515/4e9d9f4b6064282c74dac095e1216578-1000.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #C70039;
+    }
+    .btn {
+      background-color: #5F240E;      
+    }
+    body {
+      font-family: Palatino;
+    }
+    h3 {
+      font-size: x-large;
+      text-align: center;
+    }
+    h6 {
+      font-size: medium;
+    }
+    u {
+      text-decoration: none;
+      border-bottom: 2px solid lightgray;
+    }​
+    figcaption {
+      font-size: 36px;
+      font-weight: bold; 
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="jumbotron text-center">
+    <div class="jumbotron">
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      <p><a class="btn btn-primary btn-md" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
+  </div>
 
   <!-- latest Mars news -->
-  <div class="row">
-    <h2>Latest Mars News</h2>
-       <h4>{{ mars.nasa_headline }}</h4>
-          <h5>{{ mars.nasa_date }}</h5>
-             <p>{{ mars.nasa_teaser }}</p>
-             <br>
-  <div class="row">
-    <div class="col-md-7">
-      <h2>Featured Mars Image</h2>
-      <img src= {{ mars.featured_image }} width= "75%" height = "75%" alt="Featured Image" class="img-responsive"> />
-    </div>
-    <div class="col-md-5">
-      <h4>Current Weather on Mars</h4>
-        <div class="row">
-          <p>{{ mars.weather }}</p>
-        </div>
-        <div class="row">
-          <h4>Mars Facts</h4>
-            <table> {{ mars.facts_table | safe }}
-            </table>
-        </div>
-    </div>
-  </div>
-  <div class="row">
+  <div class="container">
     <div class="col-md-12">
-      <h2>Mars Hemispheres</h2>
-        <div class="col-md-6"> 
-          <figure class="figure">
-            <img src= {{ mars.hemi_img[0].image}} class="figure-img img-responsive">
-            <figcaption class="figure-caption text-center">{{ mars.hemi_img[0].title}}</figcaption>
-          </figure>
-        </div>
-
-
+      <h2><u>Latest Mars News From Nasa - {{mars.nasa_date}}</u></h2>
+        <h4>{{ mars.nasa_headline }}</h4>
+            <h6>{{ mars.nasa_teaser }}</h6>
+              <br>
     </div>
   </div>
-</div>
+  <div class="container">
+      <div class="col-md-7">
+          <img class="img-responsive" src= {{ mars.featured_image }}  alt="Featured Image">
+      </div>
+      <div class="col-md-5">
 
+        <h2><u>Current Weather on Mars</u></h2>
+            <h6>{{ mars.weather }}</h6>
+            <br>
 
+        <div class="col-md-12">
+          <h2><u>Mars Facts</u></h2>
+            <table> {{ mars.facts_table | safe }}</table>
+        </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="col-md-12">
+        <h2 class="text-center"><u> Mars Hemispheres</u></h2>
+          <div class="col-md-6"> 
+            <figure class="figure">
+              <img src= {{ mars.hemi_img[0].image}} class="figure-img img-responsive">
+              <figcaption class="figure-caption text-center">{{ mars.hemi_img[0].title}}</figcaption>
+            </figure>
+          </div>
+          <div class="col-md-6"> 
+            <figure class="figure">
+              <img src= {{ mars.hemi_img[1].image}} class="figure-img img-responsive">
+              <figcaption class="figure-caption text-center">{{ mars.hemi_img[1].title}}</figcaption>
+            </figure>
+          </div>
+      </div>
+      <div class="col-md-12">
+          <div class="col-md-6">
+              <figure class="figure">
+                  <img src= {{ mars.hemi_img[2].image}} class="figure-img img-responsive">
+                  <figcaption class="figure-caption text-center">{{ mars.hemi_img[2].title}}</figcaption>
+              </figure>
+          </div>
+          <div class="col-md-6">
+              <figure class="figure">
+                  <img src= {{ mars.hemi_img[3].image}} class="figure-img img-responsive">
+                  <figcaption class="figure-caption text-center">{{ mars.hemi_img[3].title}}</figcaption>
+              </figure>
+          </div>
+      </div>
+    </div>
 
 </body>
 

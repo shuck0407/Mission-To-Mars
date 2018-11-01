@@ -119,21 +119,20 @@ def scrape_JPL_image():
     return featured_image_url
 
 def mars_weather_tweet():
-    
-    #Use tweepy to get the latest tweet about the Mars weather
+        
+    #get mars weather's latest tweet from the website
 
-    # Setup Tweepy API Authentication
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
+    browser = init_browser()
 
-    # Target User
-    target_user = "MarsWxReport"
+    weather_url = "https://twitter.com/marswxreport?lang=en"
+    browser.visit(weather_url)
 
-    mars_weather_tweet = api.user_timeline(target_user, count=1)[0]
+    html_weather = browser.html
 
-    mars_weather = mars_weather_tweet.get('text')
-    
+    soup = BeautifulSoup(html_weather, "html.parser")
+
+    mars_weather = soup.find("p", class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
+
     print(f"Latest Weather Tweet: {mars_weather}")
     
     return mars_weather
